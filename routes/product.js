@@ -2,12 +2,9 @@ const router = require('express').Router();
 const productController = require('../controllers/productController');
 
 router.route('/')
-  .get(productController.getAllProduct)
-  .post();
+  .get(productController.getAllProduct);
 
 router.route('/:id')
-  .get(productController.getByIdProduct)
-  .put()
-  .delete();
+  .get(productController.getByIdProduct);
 
 module.exports = router;

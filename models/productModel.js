@@ -2,9 +2,7 @@ const connection = require('./connection');
 
 const getAllProduct = async () => {
   const [result] = await connection
-    .execute(
-      'INSERT INTO StoreManager.products (name, quantity) VALUES (?, ?)',
-    );
+    .execute('SELECT * FROM StoreManager.products');
 
   return result;
 };
