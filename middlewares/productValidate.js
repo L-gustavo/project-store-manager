@@ -18,14 +18,14 @@ const productValidateName = (req, res, next) => {
 
 const productValidateQuantity = (req, res, next) => {
   const { quantity } = req.body;
-  const NUMBER = 0;
+  const NUMBER = 1;
   if (!quantity) {
     return res.status(400).json(
       { message: '"quantity" is required' },
     );
   }
 
-  if (quantity <= NUMBER) {
+  if (quantity < NUMBER) {
     return res.status(422).json(
       { message: '"quantity" must be greater than or equal to 1' },
     );
