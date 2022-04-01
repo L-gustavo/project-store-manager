@@ -3,7 +3,6 @@ const productService = require('../services/productService');
 const getAllProduct = async (req, res, next) => {
   try {
     const product = await productService.getAllProduct();
-
     if (!product) {
       return res.status(404).json({ message: 'Nenhum produto retornado' });
     }

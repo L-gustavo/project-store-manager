@@ -22,7 +22,7 @@ const getByIdSales = async (id) => {
   ORDER BY s.id, sp.product_id`;
   const [sales] = await connection.execute(query, [id]);
 
-  return sales[0];
+  return sales;
 };
 
 module.exports = {
