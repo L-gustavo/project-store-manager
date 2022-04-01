@@ -3,7 +3,7 @@ const salesService = require('../services/salesService');
 const getAllSales = async (req, res, next) => {
   try {
     const sale = await salesService.getAllSales();
-    console.log(sale);
+    // console.log(sale);
 
     if (!sale) {
       return res.status(404).json({ message: 'Nenhuma sale retornada' });
@@ -23,7 +23,7 @@ const getByIdSales = async (req, res, next) => {
     if (!saleById) {
       return res.status(404).json({ message: 'Sale not found' });
     }
-    console.log(saleById);
+    // console.log(saleById);
     return res.status(200).json(saleById);
   } catch (error) {
     next(error);
