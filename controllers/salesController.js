@@ -8,7 +8,7 @@ const getAllSales = async (req, res, next) => {
       return res.status(404).json({ message: 'Nenhuma sale retornada' });
     }
 
-    res.status(200).json(sale);
+    return res.status(200).json(sale);
   } catch (error) {
     next(error);
   }

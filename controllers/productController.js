@@ -5,10 +5,10 @@ const getAllProduct = async (req, res, next) => {
     const product = await productService.getAllProduct();
 
     if (!product) {
-      return res.status(400).json({ message: 'Nenhum produto retornado' });
+      return res.status(404).json({ message: 'Nenhum produto retornado' });
     }
 
-    res.status(200).json(product);
+    return res.status(200).json(product);
   } catch (error) {
     next(error);
   }
@@ -20,7 +20,7 @@ const getByIdProduct = async (req, res, next) => {
     const idProduct = await productService.getByIdProduct(id);
 
     if (!idProduct) {
-      return res.status(400).json({ message: 'Product not found' });
+      return res.status(404).json({ message: 'Product not found' });
     }
 
     return res.status(200).json(idProduct);
