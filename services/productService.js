@@ -33,11 +33,23 @@ const productUpdate = async (product) => {
 
   const result = await productModels.updateProduct(product);
   return { code: 200, payload: result };
-};  
+};
+
+const deleteProduct = async (id) => {
+  const excludeProd = await productModels.getByIdProduct(id);
+
+  if (!excludeProd.length) {
+    return { code: 404, message: 'Product not found' };
+  }
+
+  await productModels.deleteProduct(id);
+  return { code: 204 };
+};
 
 module.exports = {
   getAllProduct,
   getByIdProduct,
   createProduct,
   productUpdate,
+  deleteProduct,
 };
