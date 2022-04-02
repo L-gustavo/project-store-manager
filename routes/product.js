@@ -8,13 +8,14 @@ const {
 
 router.route('/')
   .get(productController.getAllProduct)
-  .post(
-    productValidateName,
+  .post(productValidateName,
     productValidateQuantity,
-    productController.createProduct,
-  );
+    productController.createProduct);
 
 router.route('/:id')
-  .get(productController.getByIdProduct);
+  .get(productController.getByIdProduct)
+  .put(productValidateName,
+    productValidateQuantity,
+    productController.updateProducts);
 
 module.exports = router;

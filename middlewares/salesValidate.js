@@ -1,5 +1,5 @@
 const salesValidates = (req, res, next) => {
-  req.body.foreach(({ productId, quantity }) => {
+  req.body.forEach(({ productId, quantity }) => {
     if (!productId) {
       return res.status(400).json(
         { message: '"productId" is required' },

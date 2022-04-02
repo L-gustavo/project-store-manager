@@ -9,12 +9,11 @@ const getByIdProduct = async (id) => {
   if (!id) return false;
 
   const result = await productModels.getByIdProduct(id);
-  return result;
+  return result[0];
 };
 
 const createProduct = async (product) => {
   const productExist = await productModels.getNameExist(product.name);
-  console.log(productExist);
 
   if (productExist.length) {
     return { code: 409, message: 'Product already exists' };
@@ -25,8 +24,20 @@ const createProduct = async (product) => {
   return { code: 201, payload: result };
 };
 
+const productUpdate = async (product) => {
+  const productAtual = await productModels.getByIdProduct(product.id);
+
+  if (!productAtual.length) {
+    return { code: 404, message: 'Product not found' };
+  }
+
+  const result = await productModels.updateProduct(product);
+  return { code: 200, payload: result };
+};  
+
 module.exports = {
   getAllProduct,
   getByIdProduct,
   createProduct,
+  productUpdate,
 };
