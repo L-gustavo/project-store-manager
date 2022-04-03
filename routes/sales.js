@@ -7,6 +7,7 @@ router.route('/')
   .post(salesController.createSales);
 
 router.route('/:id')
-  .get(salesController.getByIdSales);
+  .get(salesController.getByIdSales)
+  .put(salesController.updateSales);
 
 module.exports = router;
