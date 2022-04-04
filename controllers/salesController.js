@@ -33,7 +33,6 @@ const getByIdSales = async (req, res, next) => {
 const createSales = async (req, res, next) => {
   try {
     const sales = await salesService.createSales(req.body);
-
     return res.status(201).json(sales);
   } catch (error) {
     next(error);
