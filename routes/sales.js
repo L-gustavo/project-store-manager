@@ -1,14 +1,14 @@
 const router = require('express').Router();
 
 const salesController = require('../controllers/salesController');
-// const { salesValidates } = require('../middlewares/salesValidate');
+const { salesValidates } = require('../middlewares/salesValidate');
 
 router.route('/')
   .get(salesController.getAllSales)
-  .post(salesController.createSales);
+  .post(salesValidates, salesController.createSales);
 
 router.route('/:id')
   .get(salesController.getByIdSales)
-  .put(salesController.updateSales);
+  .put(salesValidates, salesController.updateSales);
 
 module.exports = router;
