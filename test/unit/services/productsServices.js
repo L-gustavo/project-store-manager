@@ -21,7 +21,7 @@ describe('testing product service', () => {
       ];
 
       before(() => {
-        sinon.stub(productModel, 'getAllProduct').resolves([listProducts]);
+        sinon.stub(productModel, 'getAllProduct').resolves(listProducts);
       })
 
       after(() => {
@@ -34,10 +34,10 @@ describe('testing product service', () => {
         expect(response).to.be.a('array')
       })
 
-      it('returns an array with the objects', async () => {
+      it('returns an object with the right properties', async () => {
         const response = await productService.getAllProduct();
 
-        expect(response).to.be.equal(listProducts);
+        response.forEach((e) => expect(e).to.have.a.property('id'));
       })
     });
   })

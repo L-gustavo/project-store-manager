@@ -73,9 +73,7 @@ describe('testing sales models', () => {
       it('returns an object with the right properties', async () => {
         const response = await salesModel.getByIdSales(1);
 
-        expect(response).to.have.property('date');
-        expect(response).to.have.property('productId');
-        expect(response).to.have.property('quantity');
+        response.forEach((e) => expect(e).to.have.a.property('date'));
       });
     })
   })
@@ -105,7 +103,6 @@ describe('testing sales models', () => {
       it('returns an object with two properties', async () => {
         const response = await salesModel.updateSales(updateSales, 1);
 
-        expect(response).to.have.property('saleId');
         expect(response).to.have.property('itemUpdated');
       });
     })
